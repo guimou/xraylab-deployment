@@ -1,6 +1,6 @@
 ---
 key_name: opentlc_admin_backdoor
-output_dir: ./configs/{{ env_type }}-{{ guid }}
+output_dir: ./config/{{ env_type }}-{{ guid }}
 own_repo_path: http://d3s3zqyaz8cp2d.cloudfront.net/repos/ocp/{{osrelease}}
 owner: gpte-devops-automation@redhat.com
 email: gpte-devops-automation@redhat.com
