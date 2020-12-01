@@ -1,44 +1,55 @@
 ---
 # Red Hat RHTR 2020 - Hands on data pipelines: automated X-Ray images analysis!
-platform: babylon
-course_id: RHTR_2020_XRAY_DATA_PIPELINE
+# platform: babylon
+# course_id: XRAY_DATA_PIPELINE
 
 # The name of the agnosticd config to deploy
-env_type: ocp4-cluster
-software_to_deploy: openshift4
-bastion_instance_image: RHEL82
+# env_type: ocp4-cluster
+# software_to_deploy: openshift4
+# bastion_instance_image: RHEL82
 
 # OpenShift Installer Version
-ocp4_installer_version: "4.5.13"
+# ocp4_installer_version: "4.5.13"
 
 # Enable this if you want to create a user on the bastion
-install_student_user: false
+# install_student_user: false
 
 # What we use in this environment to get the packages we need
-repo_method: satellite
+# repo_method: satellite
+
+# Platform
+platform: opentlc
+
+# Cloud Provider
+cloud_provider: none
+
+# Config
+env_type: ocp-workloads
 
 # --- Infra Workloads (YAML List)
-infra_workloads:
-- ocp4_workload_authentication
-- ocp4_workload_opentlc_production
+# infra_workloads:
+# - ocp4_workload_authentication
+# - ocp4_workload_opentlc_production
+# - ocp4_workload_le_certificates
+
+ocp_workloads:
 - ocp4_workload_serverless
 - ocp4_workload_rhtr_xraylab
 - ocp4_workload_bookbag_setup
-- ocp4_workload_le_certificates
 
 # ---------------------------------------------------------
 # Authentication
 # ---------------------------------------------------------
-ocp4_workload_authentication_idm_type: ldap
-ocp4_workload_authentication_admin_user: gmoutier-redhat.com
-ocp4_workload_authentication_remove_kubeadmin: true
+# ocp4_workload_authentication_idm_type: ldap
+# ocp4_workload_authentication_admin_user: gmoutier-redhat.com
+# ocp4_workload_authentication_remove_kubeadmin: true
 
 # ---------------------------------------------------------
 # OpenTLC Production
 # ---------------------------------------------------------
-ocp4_workload_opentlc_production_remove_self_provisioner: true
-ocp4_workload_opentlc_production_expose_registry_route: false
-ocp4_workload_opentlc_production_set_build_defaults: true
+# ocp4_workload_opentlc_production_remove_self_provisioner: true
+# ocp4_workload_opentlc_production_expose_registry_route: false
+# ocp4_workload_opentlc_production_set_build_defaults: true
 
 # ---------------------------------------------------------
 # Serverless Setup
@@ -143,23 +154,4 @@ agnosticv_meta:
 __meta__:
   catalog:
     description: >-
-      Red Hat RHTR 2020 - Hands on data pipelines: automated X-Ray images analysis!
-  secrets:
-  # OpenShift Pull Secret
-  # ocp4_pull_secret
-  # ocp4_token
-  - name: ocp4-token
-    namespace: gpte
-
-  # LDAP admin password to check user auth
-  # bindPassword
-  # kerberos_keytab
-  # kerberos_user
-  # ocp4_workload_authentication_ldap_bind_password
-  # ocp4_workload_authentication_secrets
-  - name: ipa-admin
-    namespace: gpte
-
-  # Satellite Configuration
-  - name: satellite-rhel81
-    namespace: gpte
+      Hands on data pipelines: automated X-Ray images analysis!
