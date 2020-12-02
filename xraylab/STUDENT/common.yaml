@@ -22,16 +22,16 @@ ocp_workloads:
 ocp4_workload_rhtr_xraylab_user_create_quota: true
 ocp4_workload_rhtr_xraylab_user_quota:
   hard:
-    requests.cpu: "6"
-    limits.cpu: "20"
-    requests.memory: 12Gi
-    limits.memory: 25Gi
-    pods: "20"
-    configmaps: "20"
+    requests.cpu: "50"
+    limits.cpu: "100"
+    requests.memory: 50Gi
+    limits.memory: 75Gi
+    pods: "100"
+    configmaps: "100"
     secrets: "100"
-    services: "50"
-    persistentvolumeclaims: "5"
-    requests.storage: 5Gi
+    services: "100"
+    persistentvolumeclaims: "50"
+    requests.storage: 500Gi
 ocp4_workload_rhtr_xraylab_user_limits:
 - type: Container
   default:
