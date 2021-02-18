@@ -1,3 +1,3 @@
 #!/bin/bash
 mkdir -p ./config
-./merge.sh xraylab STUDENT dev > ./config/xraylab_student.yaml
+agnosticv --merge xraylab/STUDENT/dev.yaml > config/xraylab_student.yaml

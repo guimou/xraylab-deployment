@@ -1,3 +1,3 @@
 #!/bin/bash
 mkdir -p ./config
-./merge.sh xraylab BASE dev > ./config/xraylab_base.yaml
+agnosticv --merge xraylab/BASE/dev.yaml > config/xraylab_base.yaml
