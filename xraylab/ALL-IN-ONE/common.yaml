@@ -1,0 +1,215 @@
+---
+# Red Hat Summit 2021
+# Hands on data pipelines: automated X-Ray images analysis!
+# course_id: rhs2021-a0006
+# Owners: Guillaume Moutier, gmoutier@redhat.com, Kyle Bader, kbader@redhat.com
+# CPBU: datasvc
+
+#platform: babylon
+#course_id: RHTR_2020_XRAY_DATA_PIPELINE
+
+# NEEDS to have aws region decided and declared here
+#aws_region: us-east-2
+
+# Email is required for deployment... but really shouldn't be.
+#email: devops@example.com
+
+# The name of the agnosticd config to deploy
+#env_type: ocp4-cluster
+#software_to_deploy: openshift4
+#bastion_instance_image: RHEL82
+#bastion_instance_type: t3a.medium
+
+# OpenShift Installer Version
+#ocp4_installer_version: "4.7.13"
+
+# Enable this if you want to create a user on the bastion
+#install_student_user: false
+
+# What we use in this environment to get the packages we need
+#repo_method: satellite
+
+# Platform
+platform: opentlc
+
+# Cloud Provider
+cloud_provider: none
+
+# Config
+env_type: ocp-workloads
+
+# Old config
+#ocp_workloads:
+#  - ocp4_workload_authentication
+#  - ocp4_workload_openshift_container_storage
+#  - ocp4_workload_serverless
+
+# --- Infra Workloads (YAML List)
+ocp_workloads:
+  - ocp4_workload_bookbag_setup
+  - ocp4_workload_xray_pipeline_lab
+
+
+# ---------------------------------------------------------
+# Authentication
+# ---------------------------------------------------------
+ocp4_workload_authentication_idm_type: htpasswd
+ocp4_workload_authentication_htpasswd_user_base: xraylab-
+ocp4_workload_authentication_htpasswd_user_password: xraylab
+ocp4_workload_authentication_htpasswd_user_count: 10
+ocp4_workload_authentication_htpasswd_add_default_users: false
+# Admin
+ocp4_workload_authentication_admin_user: admin
+ocp4_workload_authentication_htpasswd_admin_password_length: 16
+ocp4_workload_authentication_remove_kubeadmin: true
+
+# ---------------------------------------------------------
+# OpenShift Data Foundation (OCS)
+# ---------------------------------------------------------
+# Operator
+ocp4_workload_openshift_container_storage_ocs_channel: stable-4.7
+ocp4_workload_openshift_container_storage_ocs_catalogsource_setup: true
+ocp4_workload_openshift_container_storage_ocs_catalogsource_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_openshift_container_storage_ocs_catalogsource_image_tag: v4.7_2021_07_15
+ocp4_workload_openshift_container_storage_ocs_expected_crds:
+  - backingstores.noobaa.io
+  - bucketclasses.noobaa.io
+  - noobaas.noobaa.io
+  - objectbucketclaims.objectbucket.io
+
+# Cluster deployment paramers
+ocp4_workload_openshift_container_storage_ocs_install_rgw: true
+ocp4_workload_openshift_container_storage_ocs_install_toolbox: true
+ocp4_workload_openshift_container_storage_ocs_mcg_core_cpu: 1
+ocp4_workload_openshift_container_storage_ocs_mcg_core_mem: 4Gi
+ocp4_workload_openshift_container_storage_ocs_mcg_db_cpu: 1
+ocp4_workload_openshift_container_storage_ocs_mcg_db_mem: 4Gi
+ocp4_workload_openshift_container_storage_ocs_ceph_mds_cpu: 3
+ocp4_workload_openshift_container_storage_ocs_ceph_mds_mem: 8Gi
+ocp4_workload_openshift_container_storage_ocs_ceph_mon_cpu: 1
+ocp4_workload_openshift_container_storage_ocs_ceph_mon_mem: 2Gi
+ocp4_workload_openshift_container_storage_ocs_ceph_mgr_cpu: 1
+ocp4_workload_openshift_container_storage_ocs_ceph_mgr_mem: 3Gi
+ocp4_workload_openshift_container_storage_ocs_ceph_osd_cpu: 2
+ocp4_workload_openshift_container_storage_ocs_ceph_osd_mem: 5Gi
+ocp4_workload_openshift_container_storage_ocs_ceph_storage_class_name: gp2
+ocp4_workload_openshift_container_storage_ocs_ceph_storage_osd_size: 2Ti
+ocp4_workload_openshift_container_storage_ocs_namespace: openshift-storage
+ocp4_workload_openshift_container_storage_ocs_release: v4.7.2
+ocp4_workload_openshift_container_storage_ocs_operator_workload_destroy: >
+  "{{ False if (ACTION=='create' or ACTION=='provision') else True }}"
+
+# ---------------------------------------------------------
+# Serverless Setup
+# ---------------------------------------------------------
+ocp4_workload_serverless_channel: stable
+ocp4_workload_serverless_install_eventing: true
+ocp4_workload_serverless_use_catalog_snapshot: true
+ocp4_workload_serverless_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_serverless_catalog_snapshot_image_tag: v4.7_2021_07_15
+
+
+# ---------------------------------------------------------
+# AMQ Streams Operator Setup
+# ---------------------------------------------------------
+ocp4_workload_amq_streams_channel: stable
+ocp4_workload_amq_streams_wait_for_deploy: true
+ocp4_workload_amq_streams_use_catalog_snapshot: true
+ocp4_workload_amq_streams_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_amq_streams_catalog_snapshot_image_tag: v4.7_2021_07_15
+ocp4_workload_amq_streams_starting_csv: amqstreams.v1.7.2
+
+# ---------------------------------------------------------
+# XRay Lab components to install
+# ---------------------------------------------------------
+ocp4_workload_xray_pipeline_lab_install_odh_operator: true
+ocp4_workload_xray_pipeline_lab_install_kafkasource: true
+
+# ---------------------------------------------------------
+# XRay Lab community catalog snapshot
+# ---------------------------------------------------------
+ocp4_workload_xray_pipeline_lab_use_catalogsource_setup: false
+ocp4_workload_xray_pipeline_lab_catalogsource_name: community-operators-snapshot-xraylab
+ocp4_workload_xray_pipeline_lab_catalogsource_namespace: openshift-marketplace
+ocp4_workload_xray_pipeline_lab_catalogsource_image: quay.io/gpte-devops-automation/olm_snapshot_community_catalog
+ocp4_workload_xray_pipeline_lab_catalogsource_image_tag: v4.7_2021_07_15
+
+# ---------------------------------------------------------
+# XRay Lab Open Data Hub Operator Setup
+# ---------------------------------------------------------
+ocp4_workload_xray_pipeline_lab_odh_operator_name: opendatahub-operator
+ocp4_workload_xray_pipeline_lab_odh_channel: stable
+ocp4_workload_xray_pipeline_lab_odh_automatic_install_plan_approval: true
+
+# ---------------------------------------------------------
+# XRay Lab Kafkasource Setup
+# ---------------------------------------------------------
+
+# ---------------------------------------------------------
+# XRay Lab Bookbag image Setup
+# ---------------------------------------------------------
+ocp4_workload_bookbag_setup_project: "bookbag"
+ocp4_workload_bookbag_setup_project_display: "Bookbag XRay Lab"
+ocp4_workload_bookbag_setup_git_repo: https://github.com/red-hat-data-services/xraylab-bookbag.git
+ocp4_workload_bookbag_setup_git_version: main
+ocp4_workload_bookbag_setup_image_name: xraylab-bookbag
+
+
+# ---------------------------------------------------------
+# XRay Lab per user parameters
+# ---------------------------------------------------------
+ocp4_workload_xray_pipeline_lab_user_count: 10
+ocp4_workload_xray_pipeline_lab_user_base: xraylab-
+
+
+# AgnosticV / Babylon Metadata
+__meta__:
+  aws_sandboxed: true
+  catalog:
+    display_name: Hands On Data Pipelines
+    # Icon value should can be any product name, no spaces, for which we have
+    # a product icon. Default will be generic icon.
+    icon: openshift
+    # Possible values: Labs, Workshops, Demos (plurals)
+    category: Labs
+    # Keywords are used to match search items.
+    # Strings in name and labels already match keyword searches.
+    # Searches are not case-sensitive.
+    keywords:
+      - lab
+      - ocp4
+      - openshift
+      - openshift container storage
+      - amq
+    # Labels populate search filters.
+    # Spaces need to be represented as underscores.
+    # Label keys and values need to adhere to kubernetes standards:
+    # https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
+    #  * must be 63 characters or less
+    #  * must begin and end with an alphanumeric character ([a-z0-9A-Z]),
+    #  * can only contain dashes (-), underscores (_), dots (.), and alphanumerics between.
+    labels:
+      OpenShift_Version: "4.7"
+      Product: OpenShift
+      Provider: GPTE
+      Event: Red_Hat_Summit
+
+  secrets:
+    # OpenShift Pull Secret
+    # ocp4_pull_secret
+    # ocp4_token
+    - name: ocp4-token
+      namespace: gpte
+
+    # LDAP admin password to check user auth
+    # bindPassword
+    # kerberos_keytab
+    # kerberos_user
+    # ocp4_workload_authentication_ldap_bind_password
+    # ocp4_workload_authentication_secrets
+    - name: ipa-admin
+      namespace: gpte
+
+    # Satellite Configuration
+    - name: satellite-rhel81
+      namespace: gpte

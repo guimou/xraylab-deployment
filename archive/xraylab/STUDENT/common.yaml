@@ -46,7 +46,7 @@ ocp4_workload_rhtr_xraylab_user_project_permissions:
 ocp4_workload_rhtr_xraylab_user_projects:
 - "xraylab-{{ guid }}"
 - "odh-{{ guid }}"
-ocp4_workload_rhtr_xraylab_install_grafana_operator: true
+ocp4_workload_rhtr_xraylab_install_grafana_operator: false
 
 # ---------------------------------------------------------
 # Bookbag User

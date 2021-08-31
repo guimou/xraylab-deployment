@@ -33,8 +33,8 @@ env_type: ocp-workloads
 # - ocp4_workload_le_certificates
 
 ocp_workloads:
-- ocp4_workload_serverless
-- ocp4_workload_rhtr_xraylab
+#- ocp4_workload_serverless
+#- ocp4_workload_rhtr_xraylab
 - ocp4_workload_bookbag_setup
 
 # ---------------------------------------------------------

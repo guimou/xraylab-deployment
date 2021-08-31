@@ -5,6 +5,10 @@ agnosticv_meta:
   idle_after_deploy: 2
   idle_after_start: 2
 
+ocp4_workload_rhtr_xraylab_user_create_quota: false
+ocp4_workload_rhtr_xraylab_install_grafana_operator: true
+
+
 __meta__:
   deployer:
     scm_ref: development
