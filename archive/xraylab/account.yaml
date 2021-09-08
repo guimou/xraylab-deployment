@@ -1,8 +1,0 @@
----
-cloud_provider: none
-
-# AgnosticV Meta variables
-agnosticv_meta:
-  params_to_variables:
-    user: ocp_username
-
