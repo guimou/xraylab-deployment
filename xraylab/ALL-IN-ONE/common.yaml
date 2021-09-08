@@ -38,14 +38,10 @@ cloud_provider: none
 # Config
 env_type: ocp-workloads
 
-# Old config
-#ocp_workloads:
-#  - ocp4_workload_authentication
-#  - ocp4_workload_openshift_container_storage
-#  - ocp4_workload_serverless
-
 # --- Infra Workloads (YAML List)
 ocp_workloads:
+  - ocp4_workload_openshift_container_storage
+  - ocp4_workload_serverless
   - ocp4_workload_bookbag_setup
   - ocp4_workload_xray_pipeline_lab
 

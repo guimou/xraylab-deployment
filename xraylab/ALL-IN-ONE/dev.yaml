@@ -9,6 +9,6 @@ purpose: demo
 
 __meta__:
   deployer:
-    scm_url: https://github.com/guimou/agnosticd.git
-    scm_ref: guimou-xraydemo
+    scm_url: https://github.com/redhat-cop/agnosticd.git
+    scm_ref: development
     virtualenv: ansible2.9-python3.6-2021-01-22
