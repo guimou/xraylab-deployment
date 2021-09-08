@@ -43,14 +43,6 @@ ocp4_workload_amq_streams_channel: stable
 ocp4_workload_amq_streams_starting_csv: amqstreams.v1.7.2
 ocp4_workload_amq_streams_use_catalog_snapshot: true
 ocp4_workload_amq_streams_wait_for_deploy: true
-ocp4_workload_authentication_admin_user: admin
-ocp4_workload_authentication_htpasswd_add_default_users: false
-ocp4_workload_authentication_htpasswd_admin_password_length: 16
-ocp4_workload_authentication_htpasswd_user_base: xraylab-
-ocp4_workload_authentication_htpasswd_user_count: 10
-ocp4_workload_authentication_htpasswd_user_password: xraylab
-ocp4_workload_authentication_idm_type: htpasswd
-ocp4_workload_authentication_remove_kubeadmin: true
 ocp4_workload_bookbag_setup_git_repo: https://github.com/red-hat-data-services/xraylab-bookbag.git
 ocp4_workload_bookbag_setup_git_version: main
 ocp4_workload_bookbag_setup_image_name: xraylab-bookbag
@@ -101,6 +93,6 @@ ocp4_workload_xray_pipeline_lab_odh_channel: stable
 ocp4_workload_xray_pipeline_lab_odh_operator_name: opendatahub-operator
 ocp4_workload_xray_pipeline_lab_use_catalogsource_setup: false
 ocp4_workload_xray_pipeline_lab_user_base: xraylab-
-ocp4_workload_xray_pipeline_lab_user_count: 10
+ocp4_workload_xray_pipeline_lab_user_count: 5
 platform: babylon
 purpose: demo
