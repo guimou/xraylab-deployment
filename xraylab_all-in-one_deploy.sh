@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo yum install -y ansible
+sudo pip3 uninstall ansible
 sudo pip3 install ansible==2.10.7
 ansible-galaxy collection install kubernetes.core
 
