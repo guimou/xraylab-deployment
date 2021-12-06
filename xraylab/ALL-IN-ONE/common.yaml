@@ -36,9 +36,9 @@ ocp4_workload_amq_streams_use_catalog_snapshot: false
 # ---------------------------------------------------------
 # XRay Lab components to install
 # ---------------------------------------------------------
-ocp4_workload_xray_pipeline_lab_install_odh_operator: false
-ocp4_workload_xray_pipeline_lab_install_odh: false
-ocp4_workload_xray_pipeline_lab_install_kafkasource: false
+ocp4_workload_xray_pipeline_lab_install_odh_operator: true
+ocp4_workload_xray_pipeline_lab_install_odh: true
+ocp4_workload_xray_pipeline_lab_install_kafkasource: true
 
 # ---------------------------------------------------------
 # XRay Lab community catalog snapshot
