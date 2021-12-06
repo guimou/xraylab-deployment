@@ -29,6 +29,7 @@ ocp4_workload_serverless_use_catalog_snapshot: false
 # AMQ Streams Operator Setup
 # ---------------------------------------------------------
 ocp4_workload_amq_streams_channel: stable
+ocp4_workload_amq_streams_starting_csv: amqstreams.v1.8.3
 ocp4_workload_amq_streams_wait_for_deploy: true
 ocp4_workload_amq_streams_use_catalog_snapshot: false
 
