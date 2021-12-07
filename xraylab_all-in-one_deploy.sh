@@ -5,7 +5,7 @@ sudo pip3 install ansible==2.10.7
 ansible-galaxy collection install kubernetes.core
 
 ## Get AgnosticD and configure
-git clone https://github.com/redhat-cop/agnosticd.git
+git clone -b guimou-xraydemo https://github.com/guimou/agnosticd.git
 export CURRENT_PATH=$(pwd)
 export ANSIBLE_ROLES_PATH=$CURRENT_PATH/agnosticd/ansible/roles:$CURRENT_PATH/agnosticd/ansible/roles-infra:$CURRENT_PATH/agnosticd/ansible/roles_ocp_workloads:$CURRENT_PATH/agnosticd/ansible/roles_studentvm
 

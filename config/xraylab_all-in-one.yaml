@@ -16,7 +16,7 @@ __meta__:
     - amq
     labels:
       Event: Red_Hat_Summit
-      OpenShift_Version: "4.7"
+      OpenShift_Version: "4.8"
       Product: OpenShift
       Provider: GPTE
   deployer:
@@ -33,66 +33,29 @@ __meta__:
 cloud_provider: none
 env_type: ocp-workloads
 ocp_workloads:
-- ocp4_workload_openshift_container_storage
 - ocp4_workload_serverless
 - ocp4_workload_bookbag_setup
 - ocp4_workload_xray_pipeline_lab
-ocp4_workload_amq_streams_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-ocp4_workload_amq_streams_catalog_snapshot_image_tag: v4.7_2021_07_15
 ocp4_workload_amq_streams_channel: stable
-ocp4_workload_amq_streams_starting_csv: amqstreams.v1.7.2
-ocp4_workload_amq_streams_use_catalog_snapshot: true
+ocp4_workload_amq_streams_starting_csv: amqstreams.v1.8.3
+ocp4_workload_amq_streams_use_catalog_snapshot: false
 ocp4_workload_amq_streams_wait_for_deploy: true
 ocp4_workload_bookbag_setup_git_repo: https://github.com/red-hat-data-services/xraylab-bookbag.git
 ocp4_workload_bookbag_setup_git_version: main
 ocp4_workload_bookbag_setup_image_name: xraylab-bookbag
 ocp4_workload_bookbag_setup_project: bookbag
 ocp4_workload_bookbag_setup_project_display: Bookbag XRay Lab
-ocp4_workload_openshift_container_storage_ocs_catalogsource_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-ocp4_workload_openshift_container_storage_ocs_catalogsource_image_tag: v4.7_2021_07_15
-ocp4_workload_openshift_container_storage_ocs_catalogsource_setup: true
-ocp4_workload_openshift_container_storage_ocs_ceph_mds_cpu: 3
-ocp4_workload_openshift_container_storage_ocs_ceph_mds_mem: 8Gi
-ocp4_workload_openshift_container_storage_ocs_ceph_mgr_cpu: 1
-ocp4_workload_openshift_container_storage_ocs_ceph_mgr_mem: 3Gi
-ocp4_workload_openshift_container_storage_ocs_ceph_mon_cpu: 1
-ocp4_workload_openshift_container_storage_ocs_ceph_mon_mem: 2Gi
-ocp4_workload_openshift_container_storage_ocs_ceph_osd_cpu: 2
-ocp4_workload_openshift_container_storage_ocs_ceph_osd_mem: 5Gi
-ocp4_workload_openshift_container_storage_ocs_ceph_storage_class_name: gp2
-ocp4_workload_openshift_container_storage_ocs_ceph_storage_osd_size: 2Ti
-ocp4_workload_openshift_container_storage_ocs_channel: stable-4.7
-ocp4_workload_openshift_container_storage_ocs_expected_crds:
-- backingstores.noobaa.io
-- bucketclasses.noobaa.io
-- noobaas.noobaa.io
-- objectbucketclaims.objectbucket.io
-ocp4_workload_openshift_container_storage_ocs_install_rgw: true
-ocp4_workload_openshift_container_storage_ocs_install_toolbox: true
-ocp4_workload_openshift_container_storage_ocs_mcg_core_cpu: 1
-ocp4_workload_openshift_container_storage_ocs_mcg_core_mem: 4Gi
-ocp4_workload_openshift_container_storage_ocs_mcg_db_cpu: 1
-ocp4_workload_openshift_container_storage_ocs_mcg_db_mem: 4Gi
-ocp4_workload_openshift_container_storage_ocs_namespace: openshift-storage
-ocp4_workload_openshift_container_storage_ocs_operator_workload_destroy: |
-  "{{ False if (ACTION=='create' or ACTION=='provision') else True }}"
-ocp4_workload_openshift_container_storage_ocs_release: v4.7.2
-ocp4_workload_serverless_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-ocp4_workload_serverless_catalog_snapshot_image_tag: v4.7_2021_07_15
 ocp4_workload_serverless_channel: stable
 ocp4_workload_serverless_install_eventing: true
-ocp4_workload_serverless_use_catalog_snapshot: true
-ocp4_workload_xray_pipeline_lab_catalogsource_image: quay.io/gpte-devops-automation/olm_snapshot_community_catalog
-ocp4_workload_xray_pipeline_lab_catalogsource_image_tag: v4.7_2021_07_15
-ocp4_workload_xray_pipeline_lab_catalogsource_name: community-operators-snapshot-xraylab
-ocp4_workload_xray_pipeline_lab_catalogsource_namespace: openshift-marketplace
+ocp4_workload_serverless_use_catalog_snapshot: false
 ocp4_workload_xray_pipeline_lab_install_kafkasource: true
+ocp4_workload_xray_pipeline_lab_install_odh: true
 ocp4_workload_xray_pipeline_lab_install_odh_operator: true
 ocp4_workload_xray_pipeline_lab_odh_automatic_install_plan_approval: true
 ocp4_workload_xray_pipeline_lab_odh_channel: stable
 ocp4_workload_xray_pipeline_lab_odh_operator_name: opendatahub-operator
 ocp4_workload_xray_pipeline_lab_use_catalogsource_setup: false
 ocp4_workload_xray_pipeline_lab_user_base: xraylab-
-ocp4_workload_xray_pipeline_lab_user_count: 5
+ocp4_workload_xray_pipeline_lab_user_count: 10
 platform: babylon
 purpose: demo
